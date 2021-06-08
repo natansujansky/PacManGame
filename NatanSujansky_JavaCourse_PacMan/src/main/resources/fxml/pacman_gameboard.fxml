@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javacourse.pacman.view.PacManGridView?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" styleClass="root" style="-fx-background-color: #F0FFFF;">
+	<GridPane fx:id="gridPane" hgap="90">
+		<padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+		<Label fx:id="scoreLabel" text="Score: 0" textAlignment="LEFT" minWidth="120" textFill="BLACK" style="-fx-font-size: 20; -fx-font-weight: bold" alignment="CENTER_LEFT" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+		<Label fx:id="resultLabel" textAlignment="CENTER" minWidth="120" textFill="BLACK" style="-fx-font-size: 20; -fx-font-weight: bold" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+		<Label fx:id="nameLabel" textAlignment="RIGHT" minWidth="120" textFill="BLACK" style="-fx-font-size: 20; -fx-font-weight: bold" alignment="CENTER_RIGHT" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+	</GridPane>
+	<PacManGridView fx:id="gridView" style="-fx-background-color: #000000;"></PacManGridView>
+	<Label fx:id="emptyLabel" text=""/>
+</VBox>
+
