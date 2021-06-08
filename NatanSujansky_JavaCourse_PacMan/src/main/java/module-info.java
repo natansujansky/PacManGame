@@ -1,4 +1,4 @@
-module NatanSujansky_HW6 {
+module NatanSujansky_JavaCourse_PacMan {
     requires javafx.controls;
     requires javafx.graphics;
     requires javafx.fxml;
