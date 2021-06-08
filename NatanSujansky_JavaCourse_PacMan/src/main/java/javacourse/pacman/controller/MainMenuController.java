@@ -28,7 +28,7 @@ import javafx.util.Pair;
 /**
  * Class that handles the Pac-Man game main menu logic
  *
- * @author esunata
+ * @author Natan
  *
  */
 public class MainMenuController implements Initializable {

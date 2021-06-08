@@ -22,7 +22,7 @@ import javafx.stage.Stage;
 /**
  * Class used for creation and running the tic-tac-toe game
  *
- * @author esunata
+ * @author Natan
  *
  */
 public class TicTacToe extends Application {

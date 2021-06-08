@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 /**
  * Class used for starting the game of Pac-Man
  *
- * @author esunata
+ * @author Natan
  *
  */
 public class MainApplication extends Application {

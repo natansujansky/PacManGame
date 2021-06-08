@@ -7,7 +7,7 @@ import javacourse.pacman.model.level.LevelLayout;
 /**
  * Class used for the implementation of Pac-Man
  *
- * @author esunata
+ * @author Natan
  *
  */
 public class PacManSprite extends Sprite {

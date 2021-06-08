@@ -3,7 +3,7 @@ package javacourse.tictactoe;
 /**
  * Class that is used for running the TicTacToe game
  *
- * @author esunata
+ * @author Natan
  *
  */
 public class TicTacToeRunner {

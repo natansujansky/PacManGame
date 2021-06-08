@@ -6,7 +6,7 @@ import javacourse.pacman.model.level.LevelLayout;
  * Factory helper class whose purpose is to move the initialization of Sprite
  * objects outside of other classes
  *
- * @author esunata
+ * @author Natan
  *
  */
 public class SpriteFactory {

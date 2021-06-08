@@ -8,7 +8,7 @@ import javacourse.pacman.model.level.LevelLayout;
 /**
  * Class used for implementation of a ghost
  *
- * @author esunata
+ * @author Natan
  *
  */
 public class GhostSprite extends Sprite {

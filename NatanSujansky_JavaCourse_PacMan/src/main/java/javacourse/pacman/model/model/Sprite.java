@@ -8,7 +8,7 @@ import javacourse.pacman.model.level.LevelLayout;
  * location, current location, movement direction and some methods for movement
  * or checking whether it's sharing the same position as another sprite
  *
- * @author esunata
+ * @author Natan
  *
  */
 public abstract class Sprite {

@@ -15,7 +15,7 @@ import javacourse.pacman.model.level.LevelLayout;
  * perform operations like game restart, re-initialize the model for a new
  * level, etc.
  *
- * @author esunata
+ * @author Natan
  *
  */
 public class PacManModel {

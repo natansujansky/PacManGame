@@ -3,7 +3,7 @@ package javacourse.pacman.main_app;
 /**
  * Class that is used for running the Pac-Man game
  *
- * @author esunata
+ * @author Natan
  *
  */
 public class PacManRunner {

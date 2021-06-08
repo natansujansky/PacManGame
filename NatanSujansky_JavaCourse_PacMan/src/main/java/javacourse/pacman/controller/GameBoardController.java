@@ -24,7 +24,7 @@ import javafx.scene.layout.GridPane;
  * also handles periodic updates of the game model and will update the view with
  * the new model state, which gives the game the appearance of fluidity.
  *
- * @author esunata
+ * @author Natan
  *
  */
 public class GameBoardController implements EventHandler<KeyEvent> {

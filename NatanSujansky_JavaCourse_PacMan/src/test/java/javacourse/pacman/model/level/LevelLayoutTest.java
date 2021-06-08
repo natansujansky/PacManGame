@@ -13,7 +13,7 @@ import javacourse.pacman.model.level.LevelLayout;
 /**
  * Unit test class for LevelLayout class
  *
- * @author esunata
+ * @author Natan
  *
  */
 public class LevelLayoutTest {

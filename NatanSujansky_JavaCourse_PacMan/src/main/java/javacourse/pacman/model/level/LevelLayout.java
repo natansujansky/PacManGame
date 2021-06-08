@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 /**
  * Class that serves as level layout descriptor for the pacman game
  *
- * @author esunata
+ * @author Natan
  *
  */
 public final class LevelLayout {

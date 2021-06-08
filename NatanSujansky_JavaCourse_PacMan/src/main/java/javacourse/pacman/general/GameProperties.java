@@ -17,8 +17,6 @@ public class GameProperties {
         CELL_SIZE_PROPERTY("cell_size"), FRAMES_PER_SECOND("frames_per_second"),
         GHOST_DEATH_BLINK_START_MS("ghost_death_blink_start_ms");
 
-        // TODO: add whatever you need here
-
         private final String nameString;
 
         GamePropertyNames(final String nameString) {
