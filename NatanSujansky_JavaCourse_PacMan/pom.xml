@@ -1,0 +1,235 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<developers>
+		<developer>
+			<id>Natan</id>
+			<name>Natan Sujansky</name>
+			<email>natan.sujansky@gmail.com</email>
+		</developer>
+	</developers>
+
+
+	<groupId>NatanSujansky_FinalHW</groupId>
+	<!-- Each project should have a unique Id. Don't deliver any HW with this 
+		placeholder name in the POM file. -->
+	<artifactId>NatanSujansky_FinalHW</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<!-- You don't need to define a site but keep the <url> tags. -->
+	<url>http://www.here.you.can.link.your.site.com</url>
+
+	<!-- Properties are custom constants we can define and reuse later on. Useful 
+		if you don't want to repeat same things over. Also makes modification of 
+		certain values easier because you only need to change them in one place. -->
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- We will use Java 14 since Maven plugins were tested with that version. 
+			You're free to use a more recent SDK, you'll only be running it in Java 14 
+			compatibility mode. -->
+		<maven.compiler.source>14</maven.compiler.source>
+		<maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
+		<pmdVersion>6.29.0</pmdVersion>
+		<jacocoVersion>0.8.6</jacocoVersion>
+	</properties>
+
+	<!-- Here we will specify dependencies our project has. These dependencies 
+		only relate to code we will be writting. So e.g. junit-jupter-api library 
+		will be used by our code. Later on, if you need some extra dependency, you 
+		should add it here. -->
+	<dependencies>
+		<!-- These are used for unit testing. Notice that we defined scope as test. 
+			This means these dependencies won't be included in the production. -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.7.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>5.7.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-inline</artifactId>
+			<version>3.5.13</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-controls</artifactId>
+			<version>16</version>
+		</dependency>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-fxml</artifactId>
+			<version>16</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- This is the first plugin we define. It is responsible for compiling 
+				the code. You can find more about this plugin online. There is documentation, 
+				examples, etc. -->
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<!-- Notice how we reference previously defined properties here. -->
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-M5</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>3.9.1</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>3.13.0</version>
+				<!-- This plugin can cause problems since it is possible that it relies 
+					on some older version that doesn't support latest Java version. Therefore, 
+					we specify PMD version manually. -->
+				<dependencies>
+					<dependency>
+						<groupId>net.sourceforge.pmd</groupId>
+						<artifactId>pmd-core</artifactId>
+						<version>${pmdVersion}</version>
+					</dependency>
+					<dependency>
+						<groupId>net.sourceforge.pmd</groupId>
+						<artifactId>pmd-java</artifactId>
+						<version>${pmdVersion}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacocoVersion}</version>
+				<executions>
+					<execution>
+						<!-- It is not necessary to bind this goal to 'pre-site' phase but 
+							it makes it more convenient to generate the site. If we don't do it, first 
+							we'll need to invoke 'initialize' phase or 'jacoco:prepare-agent' goal before 
+							invoking 'site'. -->
+						<phase>pre-site</phase>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+<!-- 						<filters> -->
+<!-- 							<filter> -->
+<!-- 								<artifact>*:*</artifact> -->
+<!-- 								<excludes> -->
+<!-- 									<exclude>module-info.class</exclude> -->
+<!-- 									<exclude>META-INF/**</exclude> -->
+<!-- 								</excludes> -->
+<!-- 							</filter> -->
+<!-- 						</filters> -->
+							<shadedArtifactAttached>true</shadedArtifactAttached>
+							<shadedClassifierName>stand-alone</shadedClassifierName>
+							<transformers>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>ericsson.radio.etk.javacourse.hw6.pacman.main_app.PacManRunner</mainClass>
+								</transformer>
+							</transformers>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<!-- Here we configure the 'report' life-cycle. -->
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>3.1.1</version>
+				<!-- We can be specific about the reports we want. -->
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>index</report>
+							<report>summary</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
+<!-- 				<artifactId>maven-javadoc-plugin</artifactId> -->
+<!-- 				 When you generate site, this plugin will report an error. Ignore  -->
+<!-- 					it since it is a bug in the plugin. It will be fixed in a later release,  -->
+<!-- 					possibly 3.2.1. -->
+<!-- 				<version>3.2.0</version> -->
+<!-- 				<configuration> -->
+<!-- 					<charset>UTF-8</charset> -->
+<!-- 					<docencoding>UTF-8</docencoding> -->
+<!-- 					<encoding>UTF-8</encoding> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>3.0.0</version>
+				<!-- If we don't define reports we want, default ones will be used. This 
+					is good enough for some of the plugins. -->
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>3.0.0-M5</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.github.spotbugs</groupId>
+				<artifactId>spotbugs-maven-plugin</artifactId>
+				<version>4.1.4</version>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacocoVersion}</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>report</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+		</plugins>
+	</reporting>
+
+	<!-- ONE TIP: Eclipse can auto-format XML file for you. Just press Ctrl+Shift+F. -->
+
+</project>

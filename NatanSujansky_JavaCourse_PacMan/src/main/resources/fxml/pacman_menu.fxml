@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml/1" hgap="5" vgap="5" styleClass="root">
+	<padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+	<Button fx:id="newGameButton" GridPane.columnIndex="0" GridPane.rowIndex="0" minHeight="100" minWidth="400" text="NEW GAME" textAlignment="CENTER" textFill="BLACK" style="-fx-font-size: 25; -fx-font-weight: bold" onAction="#handleNewGame"/>
+	<ComboBox fx:id="levelSelectBox" GridPane.columnIndex="0" GridPane.rowIndex="1" minHeight="100" minWidth="400" style="-fx-font-size: 25; -fx-font-weight: bold"/>
+	<Button fx:id="instructionsButton" GridPane.columnIndex="0" GridPane.rowIndex="2" minHeight="100" minWidth="400" text="INSTRUCTIONS" textAlignment="CENTER" textFill="BLACK" style="-fx-font-size: 25; -fx-font-weight: bold" onAction="#handleInstructions"/>
+	<Button fx:id="exitButton" GridPane.columnIndex="0" GridPane.rowIndex="3" minHeight="100" minWidth="400" text="EXIT" textAlignment="CENTER" textFill="BLACK" style="-fx-font-size: 25; -fx-font-weight: bold" onAction="#handleExit"/>
+</GridPane>
